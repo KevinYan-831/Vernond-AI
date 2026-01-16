@@ -1,0 +1,242 @@
+.hero {
+    padding: var(--spacing-3xl) 0;
+    min-height: calc(100vh - 250px);
+    display: flex;
+    align-items: center;
+}
+
+.hero__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3xl);
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.hero__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: var(--color-bg-glass);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    width: fit-content;
+    backdrop-filter: blur(10px);
+}
+
+.hero__badge-hearts {
+    font-size: 0.9rem;
+}
+
+.hero__badge-text {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+}
+
+.hero__title {
+    font-size: 4.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.7) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.02em;
+}
+
+.text-glow {
+    position: relative;
+    color: var(--color-accent-blue);
+    -webkit-text-fill-color: var(--color-accent-blue);
+    text-shadow: 0 0 30px rgba(92, 158, 232, 0.5);
+}
+
+.hero__subtitle {
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    margin-top: calc(var(--spacing-sm) * -1);
+    opacity: 0.9;
+}
+
+.hero__description {
+    font-size: 1.15rem;
+    color: var(--color-text-muted);
+    max-width: 420px;
+    line-height: 1.7;
+}
+
+/* Card Suit Decorations */
+.hero__suits {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-sm);
+}
+
+.suit {
+    font-size: 1.8rem;
+    animation: float 3s ease-in-out infinite;
+    opacity: 0.6;
+    transition: all var(--transition-normal);
+}
+
+.suit:hover {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.suit--heart {
+    color: #e53935;
+    animation-delay: 0s;
+}
+
+.suit--spade {
+    color: #1e3a5f;
+    animation-delay: 0.5s;
+}
+
+.suit--diamond {
+    color: #e53935;
+    animation-delay: 1s;
+}
+
+.suit--club {
+    color: #1e3a5f;
+    animation-delay: 1.5s;
+}
+
+/* Demo Section */
+.hero__demo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.hero__demo-content {
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow:
+        var(--shadow-card),
+        0 0 60px rgba(92, 158, 232, 0.15);
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(30, 58, 95, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero__demo-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-accent-blue), var(--color-heart), var(--color-accent-blue));
+}
+
+/* Demo Card */
+.demo-card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.demo-card__icon {
+    font-size: 3rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+.demo-card__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e3a5f;
+}
+
+.demo-card__description {
+    font-size: 1rem;
+    color: #4a5568;
+    max-width: 320px;
+    line-height: 1.6;
+}
+
+.demo-card__cta {
+    margin-top: var(--spacing-sm);
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .hero__container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-2xl);
+        text-align: center;
+    }
+
+    .hero__content {
+        align-items: center;
+    }
+
+    .hero__title {
+        font-size: 3rem;
+    }
+
+    .hero__subtitle {
+        font-size: 1.5rem;
+    }
+
+    .hero__description {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .hero__suits {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: var(--spacing-xl) 0;
+    }
+
+    .hero__title {
+        font-size: 2.5rem;
+    }
+
+    .hero__demo-content {
+        padding: var(--spacing-lg);
+        min-height: 250px;
+    }
+
+    .suit {
+        font-size: 1.4rem;
+    }
+}

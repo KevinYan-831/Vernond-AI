@@ -1,0 +1,329 @@
+:root {
+  /* Color Palette - Card Magic Theme (matching logo) */
+  --color-bg-primary: #0d1117;
+  --color-bg-secondary: #161b22;
+  --color-bg-card: rgba(255, 255, 255, 0.02);
+  --color-bg-glass: rgba(255, 255, 255, 0.04);
+
+  /* Card suit colors */
+  --color-heart: #e53935;
+  --color-spade: #1a237e;
+  --color-club: #212121;
+  --color-diamond: #e53935;
+
+  /* Accent colors from logo */
+  --color-accent-blue: #5c9ee8;
+  --color-accent-blue-light: #7eb8f6;
+  --color-accent-blue-dark: #3d7fc4;
+  --color-accent-navy: #1e3a5f;
+  --color-accent-pink: #e53935;
+
+  --color-text-primary: #ffffff;
+  --color-text-secondary: rgba(255, 255, 255, 0.75);
+  --color-text-muted: rgba(255, 255, 255, 0.55);
+
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-hover: rgba(255, 255, 255, 0.2);
+
+  /* Alert Colors - more prominent */
+  --color-alert-bg: linear-gradient(135deg, rgba(92, 158, 232, 0.2) 0%, rgba(229, 57, 53, 0.15) 100%);
+  --color-alert-border: rgba(92, 158, 232, 0.4);
+
+  /* Typography */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Outfit', var(--font-primary);
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-glow-blue: 0 0 20px rgba(92, 158, 232, 0.4);
+  --shadow-glow-red: 0 0 20px rgba(229, 57, 53, 0.3);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 400ms ease;
+}
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+/* Global Reset & Base Styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Background with Card Magic Theme */
+.app-container {
+  position: relative;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 15% 85%, rgba(229, 57, 53, 0.06) 0%, transparent 45%),
+    radial-gradient(ellipse at 85% 15%, rgba(92, 158, 232, 0.08) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 50%, rgba(30, 58, 95, 0.1) 0%, transparent 60%),
+    var(--color-bg-primary);
+}
+
+/* Sparkle Animation - matching logo sparkles */
+@keyframes sparkle {
+
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 15px rgba(92, 158, 232, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 30px rgba(92, 158, 232, 0.5);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes cardFloat {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  25% {
+    transform: translateY(-5px) rotate(2deg);
+  }
+
+  75% {
+    transform: translateY(3px) rotate(-2deg);
+  }
+}
+
+/* Card Suit Particles */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  font-size: 14px;
+  opacity: 0.15;
+  animation: cardFloat 6s ease-in-out infinite;
+}
+
+.particle:nth-child(4n)::after {
+  content: '♠';
+  color: var(--color-spade);
+}
+
+.particle:nth-child(4n+1)::after {
+  content: '♥';
+  color: var(--color-heart);
+}
+
+.particle:nth-child(4n+2)::after {
+  content: '♣';
+  color: var(--color-club);
+}
+
+.particle:nth-child(4n+3)::after {
+  content: '♦';
+  color: var(--color-diamond);
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Button Base */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-decoration: none;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-accent-blue) 0%, var(--color-accent-blue-dark) 100%);
+  color: white;
+  box-shadow: var(--shadow-glow-blue);
+  border: 2px solid var(--color-accent-navy);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--color-accent-blue-light) 0%, var(--color-accent-blue) 100%);
+  box-shadow: 0 0 35px rgba(92, 158, 232, 0.6);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: var(--color-bg-glass);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--color-border-hover);
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+/* Main Content - space for sticky alert */
+.main-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Toast Notification */
+.toast-container {
+  position: fixed;
+  bottom: var(--spacing-lg);
+  right: var(--spacing-lg);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.toast {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-card);
+  animation: slideIn 0.3s ease, fadeOut 0.3s ease 2.7s forwards;
+  backdrop-filter: blur(20px);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  :root {
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 0 var(--spacing-md);
+  }
+}

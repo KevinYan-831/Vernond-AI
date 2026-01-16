@@ -1,0 +1,24 @@
+/* App-specific styles */
+.app-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Additional particle styles for variety */
+.particle:nth-child(3n) {
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.8) 0%, transparent 70%);
+}
+
+.particle:nth-child(5n) {
+  width: 3px;
+  height: 3px;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.8) 0%, transparent 70%);
+}
+
+.particle:nth-child(7n) {
+  width: 5px;
+  height: 5px;
+  background: radial-gradient(circle, rgba(74, 158, 255, 0.8) 0%, transparent 70%);
+}

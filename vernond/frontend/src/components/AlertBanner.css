@@ -1,0 +1,222 @@
+.alert-banner {
+    background: linear-gradient(135deg, rgba(92, 158, 232, 0.15) 0%, rgba(229, 57, 53, 0.1) 50%, rgba(30, 58, 95, 0.15) 100%);
+    border-bottom: 2px solid rgba(92, 158, 232, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    backdrop-filter: blur(20px);
+    animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.alert-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.08) 50%,
+            transparent 100%);
+    animation: shimmer 4s ease-in-out infinite;
+}
+
+.alert-banner__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-md) var(--spacing-lg);
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.alert-banner__icon {
+    font-size: 1.3rem;
+    animation: float 2.5s ease-in-out infinite;
+}
+
+.alert-banner__content {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+}
+
+.alert-banner__content strong {
+    color: var(--color-text-primary);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.alert-banner__text {
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+}
+
+.alert-banner__cta {
+    background: linear-gradient(135deg, var(--color-accent-blue) 0%, var(--color-accent-blue-dark) 100%);
+    color: white;
+    border: 2px solid var(--color-accent-navy);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-full);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    white-space: nowrap;
+}
+
+.alert-banner__cta:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(92, 158, 232, 0.5);
+}
+
+.alert-banner__cta:active {
+    transform: scale(0.98);
+}
+
+.alert-banner__close {
+    background: transparent;
+    border: none;
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+    line-height: 1;
+}
+
+.alert-banner__close:hover {
+    color: var(--color-text-primary);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Contact Info Section */
+.alert-banner__contacts {
+    background: rgba(13, 17, 23, 0.95);
+    border-top: 1px solid var(--color-border);
+    padding: var(--spacing-lg) 0;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+    }
+
+    to {
+        opacity: 1;
+        max-height: 300px;
+    }
+}
+
+.alert-banner__contacts-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-2xl);
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    text-decoration: none;
+    color: var(--color-text-primary);
+    transition: all var(--transition-normal);
+}
+
+.contact-item--link {
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg-glass);
+    border: 1px solid var(--color-border);
+    min-width: 140px;
+}
+
+.contact-item--link:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-accent-blue);
+    box-shadow: var(--shadow-glow-blue);
+}
+
+.contact-item__qr {
+    width: 100px;
+    height: 100px;
+    border-radius: var(--radius-md);
+    background: white;
+    padding: 4px;
+}
+
+.contact-item__icon {
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.contact-item--link:hover .contact-item__icon {
+    transform: rotate(10deg) scale(1.1);
+}
+
+.contact-item--link[href*="discord"] .contact-item__icon {
+    color: #5865F2;
+}
+
+.contact-item--link[href*="instagram"] .contact-item__icon {
+    color: #E4405F;
+}
+
+.contact-item__label {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.contact-item__text {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+@media (max-width: 768px) {
+    .alert-banner__container {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-md);
+    }
+
+    .alert-banner__content {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+
+    .alert-banner__close {
+        position: absolute;
+        top: var(--spacing-sm);
+        right: var(--spacing-sm);
+    }
+
+    .alert-banner__contacts-container {
+        gap: var(--spacing-lg);
+    }
+
+    .contact-item__qr {
+        width: 80px;
+        height: 80px;
+    }
+}
