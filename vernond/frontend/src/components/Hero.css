@@ -391,3 +391,36 @@
         height: 300px;
     }
 }
+
+/* Analyzer Container for AI Analysis */
+.analyzer-container {
+    width: 100%;
+    padding: var(--spacing-md);
+    animation: fadeIn 0.4s ease;
+}
+
+/* Glass effect utility */
+.glass-effect {
+    background: rgba(10, 10, 18, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+/* Custom scrollbar for analysis content */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.3);
+    border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(212, 175, 55, 0.5);
+}

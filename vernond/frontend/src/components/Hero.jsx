@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import './Hero.css';
 import TabPanel from './TabPanel';
+import ThumbTrickAnalyzer from './magic/ThumbTrickAnalyzer';
 
 function Hero({ onShowToast }) {
     const [activeTab, setActiveTab] = useState('watch');
@@ -87,18 +88,10 @@ function Hero({ onShowToast }) {
             );
         }
 
-        // Practice tab - show the original card content
+        // Practice tab - show the ThumbTrickAnalyzer component
         return (
-            <div className="demo-card">
-                <div className="demo-card__icon">{content.icon}</div>
-                <h3 className="demo-card__title">{content.title}</h3>
-                <p className="demo-card__description">{content.description}</p>
-                <button
-                    className="btn btn-primary demo-card__cta"
-                    onClick={() => onShowToast?.('Feature coming soon! 🎩✨')}
-                >
-                    Get Started
-                </button>
+            <div className="analyzer-container">
+                <ThumbTrickAnalyzer />
             </div>
         );
     };
