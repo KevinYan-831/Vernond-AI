@@ -28,18 +28,19 @@ function App() {
 
   return (
     <div className="app-container">
-      {/* Card Suit Particles Background */}
+      {/* Magical Particles Background */}
       <div className="particles">
-        {[...Array(25)].map((_, i) => (
+        {[...Array(35)].map((_, i) => (
           <div
             key={i}
             className="particle"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 6}s`,
-              animationDuration: `${5 + Math.random() * 5}s`,
-              fontSize: `${12 + Math.random() * 10}px`
+              animationDelay: `${Math.random() * 8}s`,
+              animationDuration: `${6 + Math.random() * 8}s`,
+              fontSize: `${10 + Math.random() * 14}px`,
+              opacity: 0.2 + Math.random() * 0.4
             }}
           />
         ))}

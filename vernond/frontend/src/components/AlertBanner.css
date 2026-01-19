@@ -1,13 +1,22 @@
 .alert-banner {
-    background: linear-gradient(135deg, rgba(92, 158, 232, 0.15) 0%, rgba(229, 57, 53, 0.1) 50%, rgba(30, 58, 95, 0.15) 100%);
-    border-bottom: 2px solid rgba(92, 158, 232, 0.4);
+    background: linear-gradient(135deg, rgba(124, 77, 255, 0.2) 0%, rgba(255, 215, 0, 0.08) 50%, rgba(75, 0, 130, 0.2) 100%);
+    border-bottom: 2px solid rgba(255, 215, 0, 0.3);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
     backdrop-filter: blur(20px);
-    animation: pulse-glow 4s ease-in-out infinite;
+    animation: bannerGlow 4s ease-in-out infinite;
+}
+
+@keyframes bannerGlow {
+    0%, 100% {
+        box-shadow: 0 4px 30px rgba(124, 77, 255, 0.2);
+    }
+    50% {
+        box-shadow: 0 4px 40px rgba(255, 215, 0, 0.3), 0 4px 60px rgba(124, 77, 255, 0.2);
+    }
 }
 
 .alert-banner::before {
@@ -19,9 +28,9 @@
     height: 100%;
     background: linear-gradient(90deg,
             transparent 0%,
-            rgba(255, 255, 255, 0.08) 50%,
+            rgba(255, 215, 0, 0.1) 50%,
             transparent 100%);
-    animation: shimmer 4s ease-in-out infinite;
+    animation: shimmer 5s ease-in-out infinite;
 }
 
 .alert-banner__container {
@@ -38,7 +47,8 @@
 
 .alert-banner__icon {
     font-size: 1.3rem;
-    animation: float 2.5s ease-in-out infinite;
+    animation: floatSway 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
 }
 
 .alert-banner__content {
@@ -51,9 +61,10 @@
 }
 
 .alert-banner__content strong {
-    color: var(--color-text-primary);
+    color: var(--color-gold-light);
     font-weight: 600;
     font-size: 1rem;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
 }
 
 .alert-banner__text {
@@ -62,21 +73,40 @@
 }
 
 .alert-banner__cta {
-    background: linear-gradient(135deg, var(--color-accent-blue) 0%, var(--color-accent-blue-dark) 100%);
-    color: white;
-    border: 2px solid var(--color-accent-navy);
+    background: linear-gradient(135deg, var(--color-purple-mystic) 0%, var(--color-purple-deep) 100%);
+    color: var(--color-gold-light);
+    border: 2px solid var(--color-gold-dark);
     padding: var(--spacing-sm) var(--spacing-lg);
     border-radius: var(--radius-full);
     font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: all var(--transition-magic);
     white-space: nowrap;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.alert-banner__cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.4s ease;
+}
+
+.alert-banner__cta:hover::before {
+    left: 100%;
 }
 
 .alert-banner__cta:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(92, 158, 232, 0.5);
+    box-shadow: var(--shadow-glow-purple), var(--shadow-glow-gold);
+    border-color: var(--color-gold);
 }
 
 .alert-banner__cta:active {
@@ -96,14 +126,15 @@
 }
 
 .alert-banner__close:hover {
-    color: var(--color-text-primary);
-    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-gold);
+    background: rgba(255, 215, 0, 0.1);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
 }
 
 /* Contact Info Section */
 .alert-banner__contacts {
-    background: rgba(13, 17, 23, 0.95);
-    border-top: 1px solid var(--color-border);
+    background: linear-gradient(180deg, rgba(10, 6, 18, 0.98) 0%, rgba(20, 10, 45, 0.95) 100%);
+    border-top: 1px solid rgba(255, 215, 0, 0.2);
     padding: var(--spacing-lg) 0;
     animation: slideDown 0.3s ease;
 }
@@ -138,21 +169,21 @@
     gap: var(--spacing-sm);
     text-decoration: none;
     color: var(--color-text-primary);
-    transition: all var(--transition-normal);
+    transition: all var(--transition-magic);
 }
 
 .contact-item--link {
     padding: var(--spacing-md);
     border-radius: var(--radius-lg);
-    background: var(--color-bg-glass);
-    border: 1px solid var(--color-border);
+    background: linear-gradient(135deg, rgba(75, 0, 130, 0.3) 0%, rgba(45, 27, 105, 0.4) 100%);
+    border: 1px solid rgba(255, 215, 0, 0.15);
     min-width: 140px;
 }
 
 .contact-item--link:hover {
-    transform: translateY(-3px);
-    border-color: var(--color-accent-blue);
-    box-shadow: var(--shadow-glow-blue);
+    transform: translateY(-5px);
+    border-color: var(--color-gold);
+    box-shadow: var(--shadow-glow-gold), var(--shadow-glow-purple);
 }
 
 .contact-item__qr {
@@ -161,6 +192,7 @@
     border-radius: var(--radius-md);
     background: white;
     padding: 4px;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
 }
 
 .contact-item__icon {
@@ -168,15 +200,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.3s ease;
+    transition: all var(--transition-magic);
 }
 
 .contact-item--link:hover .contact-item__icon {
-    transform: rotate(10deg) scale(1.1);
+    transform: rotate(15deg) scale(1.2);
+    filter: drop-shadow(0 0 10px currentColor);
 }
 
 .contact-item--link[href*="discord"] .contact-item__icon {
-    color: #5865F2;
+    color: #7289da;
 }
 
 .contact-item--link[href*="instagram"] .contact-item__icon {
@@ -186,6 +219,7 @@
 .contact-item__label {
     font-weight: 600;
     font-size: 0.95rem;
+    color: var(--color-gold-light);
 }
 
 .contact-item__text {

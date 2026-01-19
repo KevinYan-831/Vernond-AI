@@ -1,33 +1,44 @@
 :root {
-  /* Color Palette - Card Magic Theme (matching logo) */
-  --color-bg-primary: #0d1117;
-  --color-bg-secondary: #161b22;
-  --color-bg-card: rgba(255, 255, 255, 0.02);
-  --color-bg-glass: rgba(255, 255, 255, 0.04);
+  /* Color Palette - Magical & Mysterious Theme */
+  --color-bg-primary: #0a0612;
+  --color-bg-secondary: #120b1e;
+  --color-bg-card: rgba(138, 43, 226, 0.05);
+  --color-bg-glass: rgba(147, 112, 219, 0.08);
 
-  /* Card suit colors */
-  --color-heart: #e53935;
-  --color-spade: #1a237e;
-  --color-club: #212121;
-  --color-diamond: #e53935;
+  /* Mystical accent colors */
+  --color-purple-deep: #4a148c;
+  --color-purple-mystic: #7b1fa2;
+  --color-purple-light: #9c27b0;
+  --color-gold: #ffd700;
+  --color-gold-light: #ffdf4d;
+  --color-gold-dark: #b8860b;
+  --color-midnight: #1a0a2e;
+  --color-starlight: #e8daef;
 
-  /* Accent colors from logo */
-  --color-accent-blue: #5c9ee8;
-  --color-accent-blue-light: #7eb8f6;
-  --color-accent-blue-dark: #3d7fc4;
-  --color-accent-navy: #1e3a5f;
-  --color-accent-pink: #e53935;
+  /* Card suit colors (kept for magic theme) */
+  --color-heart: #e91e63;
+  --color-spade: #311b92;
+  --color-club: #1a1a2e;
+  --color-diamond: #ff5722;
 
-  --color-text-primary: #ffffff;
-  --color-text-secondary: rgba(255, 255, 255, 0.75);
-  --color-text-muted: rgba(255, 255, 255, 0.55);
+  /* Accent colors */
+  --color-accent-blue: #7c4dff;
+  --color-accent-blue-light: #b388ff;
+  --color-accent-blue-dark: #651fff;
+  --color-accent-navy: #2d1b69;
+  --color-accent-pink: #ff4081;
 
-  --color-border: rgba(255, 255, 255, 0.1);
-  --color-border-hover: rgba(255, 255, 255, 0.2);
+  --color-text-primary: #f5f0ff;
+  --color-text-secondary: rgba(245, 240, 255, 0.8);
+  --color-text-muted: rgba(245, 240, 255, 0.55);
+  --color-text-gold: #ffd700;
 
-  /* Alert Colors - more prominent */
-  --color-alert-bg: linear-gradient(135deg, rgba(92, 158, 232, 0.2) 0%, rgba(229, 57, 53, 0.15) 100%);
-  --color-alert-border: rgba(92, 158, 232, 0.4);
+  --color-border: rgba(147, 112, 219, 0.2);
+  --color-border-hover: rgba(255, 215, 0, 0.4);
+
+  /* Alert Colors */
+  --color-alert-bg: linear-gradient(135deg, rgba(124, 77, 255, 0.2) 0%, rgba(255, 215, 0, 0.1) 100%);
+  --color-alert-border: rgba(124, 77, 255, 0.5);
 
   /* Typography */
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -49,15 +60,18 @@
   --radius-xl: 24px;
   --radius-full: 9999px;
 
-  /* Shadows */
-  --shadow-glow-blue: 0 0 20px rgba(92, 158, 232, 0.4);
-  --shadow-glow-red: 0 0 20px rgba(229, 57, 53, 0.3);
-  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+  /* Shadows - Mystical glows */
+  --shadow-glow-purple: 0 0 30px rgba(124, 77, 255, 0.5);
+  --shadow-glow-gold: 0 0 25px rgba(255, 215, 0, 0.4);
+  --shadow-glow-pink: 0 0 20px rgba(255, 64, 129, 0.3);
+  --shadow-card: 0 8px 32px rgba(10, 6, 18, 0.6);
+  --shadow-mystical: 0 0 60px rgba(124, 77, 255, 0.2), 0 0 100px rgba(255, 215, 0, 0.1);
 
   /* Transitions */
   --transition-fast: 150ms ease;
-  --transition-normal: 250ms ease;
-  --transition-slow: 400ms ease;
+  --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-magic: 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Import Google Fonts */
@@ -86,53 +100,79 @@ body {
   overflow-x: hidden;
 }
 
-/* Background with Card Magic Theme */
+/* Mystical Background */
 .app-container {
   position: relative;
   min-height: 100vh;
   background:
-    radial-gradient(ellipse at 15% 85%, rgba(229, 57, 53, 0.06) 0%, transparent 45%),
-    radial-gradient(ellipse at 85% 15%, rgba(92, 158, 232, 0.08) 0%, transparent 45%),
-    radial-gradient(ellipse at 50% 50%, rgba(30, 58, 95, 0.1) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 80%, rgba(124, 77, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(255, 215, 0, 0.08) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 50%, rgba(75, 0, 130, 0.2) 0%, transparent 70%),
+    radial-gradient(ellipse at 10% 10%, rgba(255, 64, 129, 0.05) 0%, transparent 30%),
+    radial-gradient(ellipse at 90% 90%, rgba(138, 43, 226, 0.1) 0%, transparent 40%),
     var(--color-bg-primary);
+  overflow: hidden;
 }
 
-/* Sparkle Animation - matching logo sparkles */
+/* Mystical fog overlay */
+.app-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(ellipse at center bottom, rgba(75, 0, 130, 0.1) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+  animation: mistPulse 8s ease-in-out infinite;
+}
+
+@keyframes mistPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.8; }
+}
+
+/* Magical Animations */
 @keyframes sparkle {
-
-  0%,
-  100% {
-    opacity: 0.2;
-    transform: scale(0.8);
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.5) rotate(0deg);
   }
-
   50% {
     opacity: 1;
-    transform: scale(1.2);
+    transform: scale(1.2) rotate(180deg);
   }
 }
 
 @keyframes float {
-
-  0%,
-  100% {
+  0%, 100% {
     transform: translateY(0);
   }
-
   50% {
-    transform: translateY(-8px);
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes floatSway {
+  0%, 100% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-8px) translateX(5px) rotate(5deg);
+  }
+  75% {
+    transform: translateY(-4px) translateX(-5px) rotate(-5deg);
   }
 }
 
 @keyframes pulse-glow {
-
-  0%,
-  100% {
-    box-shadow: 0 0 15px rgba(92, 158, 232, 0.3);
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(124, 77, 255, 0.4);
   }
-
   50% {
-    box-shadow: 0 0 30px rgba(92, 158, 232, 0.5);
+    box-shadow: 0 0 40px rgba(124, 77, 255, 0.7), 0 0 60px rgba(255, 215, 0, 0.3);
   }
 }
 
@@ -140,29 +180,61 @@ body {
   0% {
     background-position: -200% center;
   }
-
   100% {
     background-position: 200% center;
   }
 }
 
-@keyframes cardFloat {
-
-  0%,
-  100% {
-    transform: translateY(0) rotate(0deg);
+@keyframes magicFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 0.3;
   }
-
   25% {
-    transform: translateY(-5px) rotate(2deg);
+    transform: translateY(-15px) rotate(90deg) scale(1.1);
+    opacity: 0.7;
   }
-
+  50% {
+    transform: translateY(-25px) rotate(180deg) scale(1);
+    opacity: 1;
+  }
   75% {
-    transform: translateY(3px) rotate(-2deg);
+    transform: translateY(-15px) rotate(270deg) scale(0.9);
+    opacity: 0.7;
   }
 }
 
-/* Card Suit Particles */
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+    filter: blur(0px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+    filter: blur(1px);
+  }
+}
+
+@keyframes mysticalRise {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-10vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Magical Particles */
 .particles {
   position: fixed;
   top: 0;
@@ -176,29 +248,46 @@ body {
 
 .particle {
   position: absolute;
-  font-size: 14px;
-  opacity: 0.15;
-  animation: cardFloat 6s ease-in-out infinite;
+  opacity: 0.4;
+  animation: magicFloat 8s ease-in-out infinite;
 }
 
-.particle:nth-child(4n)::after {
+/* Stars */
+.particle:nth-child(5n)::after {
+  content: '✦';
+  font-size: 16px;
+  color: var(--color-gold);
+  text-shadow: 0 0 10px var(--color-gold);
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.particle:nth-child(5n+1)::after {
+  content: '✧';
+  font-size: 12px;
+  color: var(--color-starlight);
+  text-shadow: 0 0 8px var(--color-accent-blue-light);
+}
+
+/* Card suits with mystical colors */
+.particle:nth-child(5n+2)::after {
   content: '♠';
-  color: var(--color-spade);
+  font-size: 14px;
+  color: var(--color-purple-mystic);
+  text-shadow: 0 0 6px var(--color-purple-light);
 }
 
-.particle:nth-child(4n+1)::after {
-  content: '♥';
-  color: var(--color-heart);
-}
-
-.particle:nth-child(4n+2)::after {
-  content: '♣';
-  color: var(--color-club);
-}
-
-.particle:nth-child(4n+3)::after {
+.particle:nth-child(5n+3)::after {
   content: '♦';
-  color: var(--color-diamond);
+  font-size: 14px;
+  color: var(--color-gold);
+  text-shadow: 0 0 6px var(--color-gold-dark);
+}
+
+.particle:nth-child(5n+4)::after {
+  content: '✴';
+  font-size: 10px;
+  color: var(--color-accent-pink);
+  text-shadow: 0 0 6px var(--color-accent-pink);
 }
 
 /* Typography */
@@ -226,8 +315,25 @@ h6 {
   border: none;
   border-radius: var(--radius-md);
   cursor: pointer;
-  transition: all var(--transition-normal);
+  transition: all var(--transition-magic);
   text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+  left: 100%;
 }
 
 .btn:active {
@@ -235,28 +341,31 @@ h6 {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--color-accent-blue) 0%, var(--color-accent-blue-dark) 100%);
-  color: white;
-  box-shadow: var(--shadow-glow-blue);
-  border: 2px solid var(--color-accent-navy);
+  background: linear-gradient(135deg, var(--color-purple-mystic) 0%, var(--color-purple-deep) 50%, var(--color-accent-blue-dark) 100%);
+  color: var(--color-gold-light);
+  box-shadow: var(--shadow-glow-purple);
+  border: 2px solid var(--color-gold-dark);
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, var(--color-accent-blue-light) 0%, var(--color-accent-blue) 100%);
-  box-shadow: 0 0 35px rgba(92, 158, 232, 0.6);
-  transform: translateY(-2px);
+  background: linear-gradient(135deg, var(--color-purple-light) 0%, var(--color-purple-mystic) 50%, var(--color-accent-blue) 100%);
+  box-shadow: 0 0 40px rgba(124, 77, 255, 0.6), 0 0 60px rgba(255, 215, 0, 0.3);
+  transform: translateY(-3px);
+  border-color: var(--color-gold);
 }
 
 .btn-secondary {
-  background: var(--color-bg-glass);
-  color: var(--color-text-primary);
+  background: rgba(75, 0, 130, 0.2);
+  color: var(--color-starlight);
   border: 1px solid var(--color-border);
   backdrop-filter: blur(10px);
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: var(--color-border-hover);
+  background: rgba(124, 77, 255, 0.2);
+  border-color: var(--color-gold);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
 }
 
 /* Container */
@@ -285,12 +394,12 @@ h6 {
 }
 
 .toast {
-  background: var(--color-bg-secondary);
-  border: 1px solid var(--color-border);
+  background: linear-gradient(135deg, rgba(75, 0, 130, 0.9) 0%, rgba(45, 27, 105, 0.95) 100%);
+  border: 1px solid var(--color-gold-dark);
   border-radius: var(--radius-md);
   padding: var(--spacing-md) var(--spacing-lg);
-  color: var(--color-text-primary);
-  box-shadow: var(--shadow-card);
+  color: var(--color-starlight);
+  box-shadow: var(--shadow-mystical);
   animation: slideIn 0.3s ease, fadeOut 0.3s ease 2.7s forwards;
   backdrop-filter: blur(20px);
 }

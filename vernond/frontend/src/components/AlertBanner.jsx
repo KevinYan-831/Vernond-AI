@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import qrcode from '../assets/qrcode.jpg';
 import './AlertBanner.css';
 

@@ -1,26 +1,106 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import './Hero.css';
 import TabPanel from './TabPanel';
 
 function Hero({ onShowToast }) {
     const [activeTab, setActiveTab] = useState('watch');
+    const [watchPlaying, setWatchPlaying] = useState(false);
+    const [learnPlaying, setLearnPlaying] = useState(false);
+    const watchVideoRef = useRef(null);
+    const learnVideoRef = useRef(null);
 
     const tabContent = {
         watch: {
             title: 'Watch & Learn',
             description: 'Access comprehensive lessons from expert magicians with detailed breakdowns of sleight of hand techniques.',
-            icon: '🎬'
+            icon: '🎬',
+            video: '/videos/performance_compressed.mp4'
         },
         learn: {
             title: 'Personalized Practice',
             description: 'Get customized practice routines tailored to your skill level and the tricks you want to master.',
-            icon: '🎯'
+            icon: '🎯',
+            video: '/videos/learn_compressed.mp4'
         },
         practice: {
             title: 'AI Analysis & Feedback',
             description: 'Receive real-time AI-powered feedback on your technique, timing, and performance to accelerate your learning.',
-            icon: '🤖'
+            icon: '🤖',
+            video: null
         }
+    };
+
+    const handleVideoClick = (videoRef, setPlaying, isPlaying) => {
+        if (videoRef.current) {
+            if (videoRef.current.paused) {
+                videoRef.current.play();
+                setPlaying(true);
+            } else {
+                videoRef.current.pause();
+                setPlaying(false);
+            }
+        }
+    };
+
+    const renderContent = () => {
+        const content = tabContent[activeTab];
+
+        if (activeTab === 'watch') {
+            return (
+                <div
+                    className={`demo-video-container ${watchPlaying ? 'playing' : ''}`}
+                    onClick={() => handleVideoClick(watchVideoRef, setWatchPlaying, watchPlaying)}
+                >
+                    <video
+                        ref={watchVideoRef}
+                        className="demo-video"
+                        src={content.video}
+                        loop
+                        playsInline
+                        onEnded={() => setWatchPlaying(false)}
+                    />
+                    <div className="demo-video__overlay">
+                        <span className="demo-video__play-icon">▶</span>
+                    </div>
+                </div>
+            );
+        }
+
+        if (activeTab === 'learn') {
+            return (
+                <div
+                    className={`demo-video-container ${learnPlaying ? 'playing' : ''}`}
+                    onClick={() => handleVideoClick(learnVideoRef, setLearnPlaying, learnPlaying)}
+                >
+                    <video
+                        ref={learnVideoRef}
+                        className="demo-video"
+                        src={content.video}
+                        loop
+                        playsInline
+                        onEnded={() => setLearnPlaying(false)}
+                    />
+                    <div className="demo-video__overlay">
+                        <span className="demo-video__play-icon">▶</span>
+                    </div>
+                </div>
+            );
+        }
+
+        // Practice tab - show the original card content
+        return (
+            <div className="demo-card">
+                <div className="demo-card__icon">{content.icon}</div>
+                <h3 className="demo-card__title">{content.title}</h3>
+                <p className="demo-card__description">{content.description}</p>
+                <button
+                    className="btn btn-primary demo-card__cta"
+                    onClick={() => onShowToast?.('Feature coming soon! 🎩✨')}
+                >
+                    Get Started
+                </button>
+            </div>
+        );
     };
 
     return (
@@ -56,17 +136,7 @@ function Hero({ onShowToast }) {
                     />
 
                     <div className="hero__demo-content">
-                        <div className="demo-card">
-                            <div className="demo-card__icon">{tabContent[activeTab].icon}</div>
-                            <h3 className="demo-card__title">{tabContent[activeTab].title}</h3>
-                            <p className="demo-card__description">{tabContent[activeTab].description}</p>
-                            <button
-                                className="btn btn-primary demo-card__cta"
-                                onClick={() => onShowToast?.('Feature coming soon! 🎩✨')}
-                            >
-                                Get Started
-                            </button>
-                        </div>
+                        {renderContent()}
                     </div>
                 </div>
             </div>
