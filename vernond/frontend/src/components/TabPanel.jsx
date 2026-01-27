@@ -8,7 +8,7 @@ function TabPanel({ activeTab, onTabChange }) {
     ];
 
     return (
-        <div className="tab-panel">
+        <div className={`tab-panel ${activeTab === 'practice' ? 'tab-panel--expanded' : ''}`}>
             {tabs.map((tab) => (
                 <button
                     key={tab.id}

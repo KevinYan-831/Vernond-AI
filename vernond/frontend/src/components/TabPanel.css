@@ -145,3 +145,22 @@
         display: none;
     }
 }
+
+/* Expanded state for practice tab to show full analysis */
+.tab-panel--expanded {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background: linear-gradient(135deg, rgba(10, 6, 18, 0.95) 0%, rgba(20, 10, 45, 0.98) 100%);
+    padding: 1rem;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.tab-panel--expanded .tab-panel__tab {
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
